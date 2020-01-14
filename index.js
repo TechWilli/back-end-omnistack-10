@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://william_assis:<1234>@cluster0-xqxck.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://william_assis:1234@cluster0-xqxck.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -20,10 +20,10 @@ app.use(express.json());
 
 // Utilizar MongoDB - banco de dados não relacional, é mais escalável
 
-app.post('/users', (req, res) => {
+app.get('/users', (req, res) => {
     // console.log(req.query);
     // console.log(req.params);
-    console.log(req.body);
+    // console.log(req.body);
     return res.json({message: 'Hello OmniSatack'});
 })
 
