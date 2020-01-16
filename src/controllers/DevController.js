@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
+const parseStringAsArray = require('../utils/parseStringAsArray');
 
 // o controller geralmente tem 5 funções:
 // index, show, store, update, destroy
@@ -12,7 +13,7 @@ module.exports = {
     },
 
     async store (req, res) {
-        const { github_username, techs, latitude, longitude } = req.body; // , latitude, longitude
+        const { github_username, techs, latitude, longitude } = req.body;
         // console.log(github_username);
 
         let dev = await Dev.findOne({ github_username });
@@ -24,7 +25,7 @@ module.exports = {
         
             console.log(name, avatar_url, bio);
         
-            const techsArray = techs.split(',').map(tech => tech.trim()); //tring remove espaços antes e no final da string
+            const techsArray = parseStringAsArray(techs); //tring remove espaços antes e no final da string
         
             const location = {
                 type: 'Point',
@@ -43,5 +44,17 @@ module.exports = {
         }
     
         return res.json(dev);
+    },
+
+    async update() {
+
+    },
+
+    async destroy() {
+
+    },
+
+    async show() {
+
     }
 }
